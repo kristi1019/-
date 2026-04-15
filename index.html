@@ -1,133 +1,152 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的作品集</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #fff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品集 | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #2d3436;
+            --card-bg: #ffffff;
+        }
 
-    header {
-      padding: 20px;
-      text-align: center;
-      background: #1e293b;
-      position: sticky;
-      top: 0;
-    }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
 
-    nav a {
-      margin: 0 15px;
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+        }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+        h1 { margin: 0; font-weight: 300; letter-spacing: 2px; }
 
-    h1, h2 {
-      margin-bottom: 20px;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        /* 作品區塊 */
+        .project-item {
+            margin-bottom: 100px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
 
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 15px;
-      transition: 0.3s;
-    }
+        .project-info {
+            margin-bottom: 25px;
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+        .project-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
+        .project-desc {
+            font-size: 1rem;
+            color: #666;
+            max-width: 700px;
+        }
 
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 15px;
-      background: #38bdf8;
-      color: #000;
-      border-radius: 8px;
-      text-decoration: none;
-    }
+        /* 圖片網格 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1e293b;
-    }
-  </style>
+        .image-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 600px) {
+            .image-grid { grid-template-columns: 1fr 1fr; }
+            .project-title { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>我的作品集</h1>
-  <nav>
-    <a href="#about">關於我</a>
-    <a href="#projects">作品</a>
-    <a href="#contact">聯絡</a>
-  </nav>
-</header>
+    <header>
+        <h1>SELECTED WORKS</h1>
+        <p>2024 - 2026 個人作品集</p>
+    </header>
 
-<section id="about">
-  <h2>關於我</h2>
-  <p>我是XXX，擅長遊戲設計、網頁開發與互動設計。</p>
-</section>
+    <div class="container" id="portfolio">
+        <section class="project-item">
+            <div class="project-info">
+                <h2 class="project-title">01.《Pass or Die》校園逃生遊戲</h2>
+                <p class="project-desc">是一款以校園為背景的2D逃生遊戲，玩家需在有限時間內蒐集足夠學分並找到正確鑰匙，成功逃離校園。遊戲結合探索與壓力機制，透過區域化地圖設計，引導玩家在教學區、休閒區與出口區之間進行策略性行動。過程中，玩家需躲避教授干擾、利用咖啡廳獲得增益，並在隨機性與不確定性中做出判斷。遊戲透過時間限制與視野控制營造緊張氛圍，同時加入提示系統降低卡關情況，提升整體流暢度與可玩性，強調玩家在壓力下的決策體驗與探索樂趣。
+</p>
+            </div>
+            <div class="image-grid">
+                <img src="螢幕擷取畫面 2026-04-15 133818.png" alt="Work 1-1">
+                <img src="螢幕擷取畫面 2026-04-15 133629.png" alt="Work 1-2">
+                <img src="螢幕擷取畫面 2026-04-15 133557.png" alt="Work 1-3">
+                <img src="螢幕擷取畫面 2026-04-15 133503.png" alt="Work 1-4">
+                <img src="螢幕擷取畫面 2026-04-15 133402.png" alt="Work 1-5">
+                <img src="S__98328587.jpg" alt="Work 1-6">
+            </div>
+        </section>
 
-<section id="projects">
-  <h2>作品集</h2>
-  <div class="projects">
+        <section class="project-item">
+            <div class="project-info">
+                <h2 class="project-title">02.台灣日記地圖</h2>
+                <p class="project-desc">以台灣地圖為視覺核心，將個人足跡與情感記憶數位化。使用者透過點擊地圖上各縣市的圖標，即可進入專屬的紀錄空間。
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <h3>校園逃生遊戲</h3>
-      <p>Unity 2D 遊戲，結合解謎與劇情。</p>
-      <a class="btn" href="#">查看作品</a>
-    </div>
+網頁界面設計簡潔且功能直觀，支持多張照片上傳，並提供「上一張、下一張」的輪播功能，讓影像呈現更具動態感。每件作品皆配有標題輸入框與詳細敘述區，方便使用者記下如「21歲生日」等重要時刻的點滴心聲。此外，系統具備靈活的編輯與儲存機制，讓回憶的保存既系統化又充滿溫度，是一份兼具技術實作與感性敘事的數位作品集。</p>
+            </div>
+            <div class="image-grid">
+                <img src="螢幕擷取畫面 2026-04-15 131608.png" alt="Work 2-1">
+                <img src="螢幕擷取畫面 2026-04-15 131728.png" alt="Work 2-2">
+                <img src="螢幕擷取畫面 2026-04-15 133156.png" alt="Work 2-3">
+            </div>
+        </section>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <h3>無障礙地圖網站</h3>
-      <p>提供無障礙設施查詢的網頁系統。</p>
-      <a class="btn" href="#">查看作品</a>
-    </div>
+        </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200">
-      <h3>任務管理系統</h3>
-      <p>支援新增、修改與刪除任務。</p>
-      <a class="btn" href="#">查看作品</a>
-    </div>
+    <footer>
+        &copy; 2026 Created by Your Name. All Rights Reserved.
+    </footer>
 
-  </div>
-</section>
-
-<section id="contact">
-  <h2>聯絡我</h2>
-  <p>Email：your@email.com</p>
-</section>
-
-<footer>
-  <p>© 2026 我的作品集</p>
-</footer>
-
+    <script>
+        // 簡單的點擊放大邏輯（可選）
+        const images = document.querySelectorAll('.image-grid img');
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                // 這裡可以加入 Lightbox 插件或簡單的 window.open
+                console.log("查看圖片：" + img.src);
+            });
+        });
+    </script>
 </body>
 </html>
