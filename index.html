@@ -1,152 +1,309 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的作品集 | Portfolio</title>
-    <style>
-        :root {
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --accent-color: #2d3436;
-            --card-bg: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品集 | Portfolio</title>
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --accent-color: #2d3436;
+    --card-bg: #ffffff;
+}
 
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            background: white;
-        }
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+}
 
-        h1 { margin: 0; font-weight: 300; letter-spacing: 2px; }
+/* Header */
+header {
+    text-align: center;
+    padding: 80px 20px;
+    background: white;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+h1 {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
 
-        /* 作品區塊 */
-        .project-item {
-            margin-bottom: 100px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
 
-        .project-info {
-            margin-bottom: 25px;
-        }
+/* Project */
+.project-item {
+    margin-bottom: 100px;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
 
-        .project-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-        }
+.project-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
 
-        .project-desc {
-            font-size: 1rem;
-            color: #666;
-            max-width: 700px;
-        }
+/* Button */
+.project-links {
+    margin-top: 15px;
+}
 
-        /* 圖片網格 */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
 
-        .image-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+.btn-github {
+    background: #2d3436;
+    color: white;
+}
 
-        .image-grid img:hover {
-            transform: scale(1.02);
-        }
+/* ⭐ 主圖 */
+.main-image {
+    width: 100%;
+    margin-top: 20px;
+}
 
-        footer {
-            text-align: center;
-            padding: 50px;
-            color: #888;
-            font-size: 0.9rem;
-        }
+.main-image img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #eee;
+    cursor: pointer;
+}
 
-        /* 響應式調整 */
-        @media (max-width: 600px) {
-            .image-grid { grid-template-columns: 1fr 1fr; }
-            .project-title { font-size: 1.5rem; }
-        }
-    </style>
+/* ⭐ 縮圖 */
+.thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.thumb-grid img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.thumb-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px;
+    color: #888;
+}
+
+/* Lightbox */
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>SELECTED WORKS</h1>
-        <p>2024 - 2026 個人作品集</p>
-    </header>
+<header>
+    <h1>遊戲企劃 × 互動設計 × AI應用</h1>
+    <p>專注於遊戲玩法設計與玩家體驗，具備 Unity 2D / 3D 開發經驗</p>
+</header>
 
-    <div class="container" id="portfolio">
-        <section class="project-item">
-            <div class="project-info">
-                <h2 class="project-title">01.《Pass or Die》校園逃生遊戲</h2>
-                <p class="project-desc">是一款以校園為背景的2D逃生遊戲，玩家需在有限時間內蒐集足夠學分並找到正確鑰匙，成功逃離校園。遊戲結合探索與壓力機制，透過區域化地圖設計，引導玩家在教學區、休閒區與出口區之間進行策略性行動。過程中，玩家需躲避教授干擾、利用咖啡廳獲得增益，並在隨機性與不確定性中做出判斷。遊戲透過時間限制與視野控制營造緊張氛圍，同時加入提示系統降低卡關情況，提升整體流暢度與可玩性，強調玩家在壓力下的決策體驗與探索樂趣。
-</p>
-            </div>
-            <div class="image-grid">
-                <img src="螢幕擷取畫面 2026-04-15 133818.png" alt="Work 1-1">
-                <img src="螢幕擷取畫面 2026-04-15 133629.png" alt="Work 1-2">
-                <img src="螢幕擷取畫面 2026-04-15 133557.png" alt="Work 1-3">
-                <img src="螢幕擷取畫面 2026-04-15 133503.png" alt="Work 1-4">
-                <img src="螢幕擷取畫面 2026-04-15 133402.png" alt="Work 1-5">
-                <img src="S__98328587.jpg" alt="Work 1-6">
-            </div>
-        </section>
+<div class="container">
 
-        <section class="project-item">
-            <div class="project-info">
-                <h2 class="project-title">02.台灣日記地圖</h2>
-                <p class="project-desc">以台灣地圖為視覺核心，將個人足跡與情感記憶數位化。使用者透過點擊地圖上各縣市的圖標，即可進入專屬的紀錄空間。
+<!-- ===================== PROJECT 1 ===================== -->
+<section class="project-item">
+    <h2 class="project-title">01. Pass or Die 校園逃生遊戲</h2>
 
-網頁界面設計簡潔且功能直觀，支持多張照片上傳，並提供「上一張、下一張」的輪播功能，讓影像呈現更具動態感。每件作品皆配有標題輸入框與詳細敘述區，方便使用者記下如「21歲生日」等重要時刻的點滴心聲。此外，系統具備靈活的編輯與儲存機制，讓回憶的保存既系統化又充滿溫度，是一份兼具技術實作與感性敘事的數位作品集。</p>
-            </div>
-            <div class="image-grid">
-                <img src="螢幕擷取畫面 2026-04-15 131608.png" alt="Work 2-1">
-                <img src="螢幕擷取畫面 2026-04-15 131728.png" alt="Work 2-2">
-                <img src="螢幕擷取畫面 2026-04-15 133156.png" alt="Work 2-3">
-            </div>
-        </section>
+    <p><strong>專案簡介</strong>
+        <br> 結合時間壓力與探索機制的2D校園逃生遊戲。</p> 
+        <p><strong>我的角色</strong>
+            <br> 關卡設計 / 玩家流程 / 系統設計 / Unity開發</p> 
+            <p><strong>核心玩法</strong></p>
+             <ul> <li>學分收集</li>
+                 <li>時間限制</li> 
+                 <li>迷宮探索</li> 
+                 <li>隨機鑰匙</li> 
+            </ul> 
+            <p><strong>設計思考</strong></p> 
+            <ul> <li>時間壓力提升決策緊張感</li> 
+                <li>隨機性增加重玩價值</li> </ul>
+    <div class="project-links">
+        <a href="https://github.com/kristi1019/Pass-or-Die-.git" 
+        class="btn btn-github" 
+        target="_blank">
+        ⬇️ 下載遊戲
+        </a>
+    </div>
 
-        </div>
+    <!-- 主圖 -->
+    <div class="main-image">
+        <img id="mainImg1" src="螢幕擷取畫面 2026-04-15 133402.png">
+    </div>
 
-    <footer>
-        &copy; 2026 Created by Your Name. All Rights Reserved.
-    </footer>
+    <!-- 縮圖 -->
+    <div class="thumb-grid" data-main="mainImg1">
+        <img src="螢幕擷取畫面 2026-04-15 133402.png">
+        <img src="螢幕擷取畫面 2026-04-15 133503.png">
+        <img src="S__98328587.jpg">
+        <img src="螢幕擷取畫面 2026-04-15 133557.png">
+        <img src="螢幕擷取畫面 2026-04-15 133629.png">
+        <img src="螢幕擷取畫面 2026-04-15 133818.png">
+    </div>
+</section>
 
-    <script>
-        // 簡單的點擊放大邏輯（可選）
-        const images = document.querySelectorAll('.image-grid img');
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                // 這裡可以加入 Lightbox 插件或簡單的 window.open
-                console.log("查看圖片：" + img.src);
-            });
+<!-- ===================== PROJECT 2 ===================== -->
+<section class="project-item">
+    <h2 class="project-title">02. 台灣歷史探險 VR</h2>
+
+    <p><strong>專案簡介</strong><br> 一款以台灣歷史古蹟為主題的沉浸式VR探索體驗。</p> <p><strong>我的角色</strong><br> 互動設計 / 玩家體驗設計 / VR場景規劃 / Unity開發</p> <p><strong>核心玩法</strong></p> <ul> <li>第一人稱沉浸式探索</li> <li>歷史場景切換</li> <li>導覽與任務引導</li> <li>環境敘事</li> </ul> <p><strong>設計思考</strong></p> <ul> <li>以探索取代壓力</li> <li>提升沉浸感與學習動機</li> </ul>
+
+
+
+    <!-- 主圖 -->
+    <div class="main-image">
+        <img id="mainImg2" src="螢幕擷取畫面 2026-04-17 144627.png">
+    </div>
+
+    <!-- 縮圖 -->
+    <div class="thumb-grid" data-main="mainImg2">
+        <img src="螢幕擷取畫面 2026-04-17 144627.png">
+        <img src="螢幕擷取畫面 2026-04-17 145141.png">
+        <img src="螢幕擷取畫面 2026-04-17 153119.png">
+        <img src="螢幕擷取畫面 2026-04-17 145322.png">
+        <img src="螢幕擷取畫面 2026-04-17 145446.png">
+        <img src="螢幕擷取畫面 2026-04-17 150226.png">
+    </div>
+</section>
+
+<!-- ===================== PROJECT 3 ===================== -->
+<section class="project-item">
+    <h2 class="project-title">03. Shuttle Double Worlds 雙界穿梭（遊戲企劃案）</h2>
+
+    <p><strong>專案類型</strong><br>
+    直向捲軸射擊遊戲企劃設計（Concept Design / Game System Proposal）</p>
+
+    <p><strong>專案簡介</strong><br>
+    本專案為一款結合「現實世界／裡世界」雙層空間切換機制的射擊遊戲企劃。
+    玩家需透過即時切換不同世界狀態，應對敵人攻擊模式與地形變化，強調策略判斷與反應操作的結合。</p>
+
+    <p><strong>負責內容</strong><br>
+    遊戲機制設計 / 關卡邏輯規劃 / 戰鬥系統設計 / 數值與難度調整</p>
+
+    <p><strong>核心玩法設計</strong></p>
+    <ul>
+        <li>雙世界切換機制：玩家可即時切換現實與裡世界，改變戰場狀態</li>
+        <li>直向捲軸射擊系統：高節奏彈幕射擊與閃避設計</li>
+        <li>跨世界 Boss 設計：敵人具備不同世界的攻擊邏輯</li>
+        <li>成長系統設計：透過掉落資源強化武器與生存能力</li>
+    </ul>
+
+    <p><strong>設計理念</strong></p>
+    <ul>
+        <li>策略優先於反應：強迫玩家判斷「何時切換世界」</li>
+        <li>降低認知負擔：以顏色與視覺風格區隔雙世界狀態</li>
+        <li>動態難度設計：兼顧新手理解與核心玩家挑戰性</li>
+    </ul>
+
+    <div class="project-links">
+        <a href="電玩企劃書 起床重睡.pdf" class="btn btn-github">企劃文件</a>
+    </div>
+
+    <!-- ⭐ 改成「概念圖 / UI草圖 / 世界觀圖」 -->
+    <div class="main-image">
+        <img id="mainImg3" src="電玩企劃.png">
+    </div>
+
+    <div class="thumb-grid" data-main="mainImg3">
+        <img src="電玩企劃.png">
+        <img src="螢幕擷取畫面 2026-04-17 200439.png">
+        <img src="螢幕擷取畫面 2026-04-17 200528.png">
+        <img src="螢幕擷取畫面 2026-04-17 200614.png">
+        
+        
+    </div>
+</section>
+
+</div>
+
+<footer>
+© 2026 
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+    <img id="lightbox-img">
+</div>
+
+<script>
+/* =========================
+   縮圖 ↔ 主圖交換
+========================= */
+document.querySelectorAll('.thumb-grid').forEach(grid => {
+    const mainId = grid.dataset.main;
+    const mainImg = document.getElementById(mainId);
+
+    grid.querySelectorAll('img').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            const temp = mainImg.src;
+            mainImg.src = thumb.src;
+            thumb.src = temp;
         });
-    </script>
+    });
+});
+
+/* =========================
+   Lightbox（點主圖放大）
+========================= */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.querySelectorAll('.main-image img').forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+    });
+});
+
+lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
+</script>
+
 </body>
 </html>
